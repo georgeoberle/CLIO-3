@@ -1,0 +1,7 @@
+Unfortunately I lost the trial and error practice that I did for these projects.
+I worked on this several times and reread the text but still had problems with the execution.
+
+
+
+for (var line = "#"; line.length < 8; line += "#")
+  console.log(line);
