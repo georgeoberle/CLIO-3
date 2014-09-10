@@ -1,0 +1,64 @@
+Chapter 1
+100 + 4 * 11
+(1 - 2) + 1
+"patch my boat with chewing gum"
+'monkeys wave goodbye'
+"Obi Wan never told you \n what happened to your father."
+"con" + "cat" + "e" + "nate"
+3>2
+3<2
+("Aardvark" < "Zoroaster")
+("Boston" > "Chicago")
+
+NOT
+("Itchy" != "Scratchy")
+
+(NaN == NaN)
+(5 == NaN)
+
+AND
+(true && false)
+(true && true)
+OR
+(false || true)
+
+Combining Terms
+1 + 1 == 2 && 10 * 10 > 50
+
+
+
+
+Chapter 2
+for (var line = "#"; line.length < 8; line += "#")
+  console.log(line);
+
+  for (var n = 1; n <= 100; n++) {
+  var output = "";
+  if (n % 3 == 0)
+    output += "Fizz";
+  if (n % 5 == 0)
+    output += "Buzz";
+  console.log(output || n);}
+
+  var size = 8;
+
+var board = "";
+
+for (var y = 0; y < size; y++) {
+  for (var x = 0; x < size; x++) {
+    if ((x + y) % 2 == 0)
+      board += "#";
+    else
+      board += " ";
+  }
+ board += "\n";}
+
+console.log(board);
+
+  Chapter 3
+
+var square = function(x) {
+  return x * x;
+};
+(square(12));
+
