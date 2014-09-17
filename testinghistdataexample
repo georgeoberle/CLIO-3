@@ -1,0 +1,136 @@
+I started this by identifying a data source that might be useful to my final project. I opted for the using the book- 
+Handbook of Learned Societies and institutions:America. Washington, D.C. :, 1908. http://hdl.handle.net/2027/uc1.b3271504
+
+This handbook, like most directories and sources like this, have very consistent data.
+Some of the elements that migght be useful to me are 
+Name
+Address
+History
+Object
+Meetings
+Membership
+Serial Publications
+Special Publications
+Distribution of Publications
+Research Funds and Prizes
+
+
+Also this source is out of copyright. 
+
+
+The next goal is to write a constructor function to create new objects.
+
+
+Then create at least five objects.
+
+
+var alpine = {
+  name: "American Alpine Club",
+  dateFounded: 1903
+  address: {
+  city: "Philadelphia",
+  state: "PA"
+     }
+
+var oriental = {
+  name: "American Oriental Society",
+  dateFounded: 1842
+  address: {
+  city: "New Haven",
+  state: "CT"
+     }
+     
+var aps = {
+  name: "American Philosophical Society",
+  dateFounded: 1743
+  address: {
+  city: "Philadelphia",
+  state: "PA"
+     }
+
+var ans = {
+  name: "Academy of Natural Sciences",
+  dateFounded: 1812
+  address: {
+  city: "Philadelphia",
+  state: "PA"
+     }
+var aas = {
+  name: "American Antiquarian Society",
+  dateFounded: 1812
+  address: {
+  city: "Worcester",
+  state: "MA"
+     }
+
+store an arbitrary number of objects
+
+Do something interesting
+
+Sums total members
+
+var aaas = {
+ name: "American Association for the Advancement of Science",
+ dateFounded: 1848,
+ address: {
+   city: "Washington",
+   state: "DC" },
+ publication: "American Journal of Science",
+ membership: {
+   Fellows: 1351,
+   Members: 2963
+  },
+ totalMembers: function() {
+   var total = 0;
+   for(var category in this.membership) {
+    total += this.membership[category]
+   }
+   return total;
+ }
+}
+
+
+
+
+post on github
+
+
+
+
+
+
+
+Notes and other efforts
+function society name () {}
+
+var society name = new society name()
+
+alert ( society name.constructor == society name ) //true
+
+var alpine = {
+  name: "American Alpine Club",
+  dateFounded: 1903
+  address: {
+  city: "Philadelphia",
+  state: "PA"
+     }
+  publication: {Appalacia},
+  membership: {
+	Active: "50",
+	Honorary: "7"  
+}
+
+var aaas ={
+	name: "American Association for the Advancement of Science",
+	dateFounded: 1848
+	address: {
+	city: "Washington",
+	state: "DC"
+	}
+	publication: {American Journal of Science}
+	membership: {
+	Fellows: "1,351",
+	Members: "2,963"
+	}
+	
+	}
