@@ -1,0 +1,181 @@
+These are my notes and exercises from week 4 of CLIO 3
+Chp 4. Notes
+Data Sets
+Strings can be used to represent a collection of numbers and as long as I want.
+e.g. "2 3 5 7 11" but this removes their numberness.
+
+JavaScript allows for a data type for storing sequences of values-- 
+array: written as a list of values between square brackets, separated by commas.
+var listOfNumbers = [13, 15, 17, 22, 26];
+console.log (listOfNumbers [1]);
+Produces 15
+
+var listOfNumbers = [13, 15, 17, 22, 26];
+console.log (listOfNumbers [1-1]);  
+Produces 13
+
+
+Properties
+All values have properties except null and undefined.
+Access values with dot . or square brackets []  
+.x fetches the property of value named “x”, 
+value[x] tries to evaluate the expression x and uses the result as the property name.
+
+value.length
+listOfNumbers.length yields
+5
+
+Extracting a value use [] this identifies a position within the array.
+listOfNumbers ["0"] yields
+13
+
+Methods
+var yes = "Yes";
+console.log(typeof Yes .toUpperCase);
+function
+console.log (Yes.toUpperCase());
+
+This one had an error--return to later
+
+var doh = "Doh";
+console.log(typeof doh.toUpperCase);
+// → function
+console.log(doh.toUpperCase());
+// → DOH
+
+
+var george = [];
+george.push("George");
+george.push("Washington", "father", "of", "our", "country");
+console.log(george.join(" "));
+
+Objects
+var day1 ={
+guilty: false,
+events: ["read", "write", "eat", "plant", "walk", "nap"]
+};
+console.log(day1.guilty)
+
+
+
+var day1 = {
+  squirrel: false,
+  events: ["work", "touched tree", "pizza", "running",
+           "television"]
+};
+console.log(day1.squirrel);
+// → false
+console.log(day1.wolf);
+// → undefined
+day1.wolf = false;
+console.log(day1.wolf);
+// → false
+
+Journal 
+
+var journal = [];
+
+function addEntry(events, didGWchopTree) {
+  journal.push({
+    events: events,
+    tree: didGWchopTree
+  });
+}
+
+addEntry(["read", "write", "eat", "walk",
+          "nap"], false);
+addEntry(["read", "ice cream", "cauliflower", "lasagna",
+          "touched tree", "brushed teeth"], false);
+addEntry(["weekend", "cycling", "break", "peanuts",
+          "beer"], true);
+          
+          
+CHAPTER 4 Exercises
+
+Data Structures Objects Arrays
+function range(start, end, step) {
+  if (step == null) step = 1;
+  var array = [];
+
+  if (step > 0) {
+    for (var i = start; i <= end; i += step)
+      array.push(i);
+  } else {
+    for (var i = start; i >= end; i += step)
+      array.push(i);
+  }
+  return array;
+}
+
+function sum(array) {
+  var total = 0;
+  for (var i = 0; i < array.length; i++)
+    total += array[i];
+  return total;
+}
+
+console.log(sum(range(1, 10)));
+// → 55
+console.log(range(5, 2, -1));
+// → [5, 4, 3, 2]
+
+function range(start, end, step) {
+  if (step == null) step = 1;
+  var array = [];
+
+  if (step > 0) {
+    for (var i = start; i <= end; i += step)
+      array.push(i);
+  } else {
+    for (var i = start; i >= end; i += step)
+      array.push(i);
+  }
+  return array;
+}
+
+function sum(array) {
+  var total = 0;
+  for (var i = 0; i < array.length; i++)
+    total += array[i];
+  return total;
+}
+
+console.log(sum(range(1, 10)));
+// → 55
+console.log(range(5, 2, -1));
+// → [5, 4, 3, 2]
+
+
+
+
+function range(start, end, step) {
+  if (step == null) step = 1;
+  var array = [];
+
+  if (step > 0) {
+    for (var i = start; i <= end; i += step)
+      array.push(i);
+  } else {
+    for (var i = start; i >= end; i += step)
+      array.push(i);
+  }
+  return array;
+}
+
+function sum(array) {
+  var total = 0;
+  for (var i = 0; i < array.length; i++)
+    total += array[i];
+  return total;
+}
+
+console.log(sum(range(1, 10)));
+// → 55
+console.log(range(5, 2, -1));
+// → [5, 4, 3, 2]
+
+Reverse an Array
+console.log(reverseArray(["A", "B", "C"]));
+
+Stuck on this.
+console.log (reverse Array(["A", "B", "C"]);
