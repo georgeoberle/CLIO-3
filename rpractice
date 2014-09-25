@@ -1,0 +1,79 @@
+# This dataset is from Daniel Walker Howe's What Hath God Wrought. It includes many experiments and excercises for Clio3
+
+setwd("~/CLIO-3/colleges")
+library(ggplot2)
+colleges <- read.csv("colleges.csv", stringsAsFactors = FALSE)
+class (colleges)
+ggplot(data = colleges, aes(x = college, y = Date.Established)) + geom_point()
+str(College)
+str(Harvard)
+str(colleges)
+colleges$College
+colleges$State
+
+ggplot(data = colleges, aes(x = College, y = State)) + geom_point()
+
+ggplot(data = colleges, aes(x = College, y = Date.Established)) + geom_point()
+
+ggplot(data = colleges, aes(x = Date.Established, y = State)) + geom_line()
+
+ggplot(data = colleges, aes(x = Sponsoring.Institution, y = State)) + geom_line()
+
+str(1636)
+str(Harvard)
+colleges$strState
+
+library(ggplot2)
+colleges<-read.csv("colleges.csv")
+ggplot(data = colleges, aes(x = College, y = Date.Established)) + geom_point()
+ggplot(data = colleges, aes(x = College, y = State)) + geom_bar(stat="identity")
+v <- c(data = colleges, College)
+head(colleges$Date.Established, 20)
+colleges$strState
+length (college)
+lst$college
+
+str(colleges)
+colleges$College
+colleges$Date.Established <-length
+colleges$State
+head
+countCol=(data=colleges$State)
+countDat=(data=colleges$Date.Established)
+c(countCol, countDat)
+combCol =(data=colleges$State $Date.Established)
+
+
+# Some dead endscount (data=colleges, [$Date.Established])
+# b <-(colleges$College)
+# d <-(colleges$Date.Established)
+# e <-(colleges$State)
+# c(b,d,e)
+
+# 
+ggplot(data = colleges, aes(x = State)) + geom_bar(stat="bin")
+
+ggplot(data = colleges, aes(x = Date.Established)) + geom_bar(stat="bin", binwidth =5)
+
+ggplot(data = colleges, aes(x = State)) + geom_bar(stat="bin") + facet_wrap(~ Date.Established)
+
+ggplot(data = colleges, aes(x = Date.Established)) + geom_bar(stat="bin", binwidth =10) + facet_wrap(~ State)
+
+library(historydata)
+library(dplyr)
+head(us_state_populations, n=25)
+
+ggplot(data = us_state_populations, aes(x = year, y = population)) + geom_point()
+
+us_state_populations %>%
+  filter(year >= 1790,
+         year <= 1860,
+         state %in% c("Ohio", "Pennsylvania", "New York")) %>% 
+  ggplot(aes(x = year, y = population, color = state)) + geom_line()
+
+us_state_populations %>%
+  filter(year >= 1790,
+         year <= 1860,
+         state %in% c("Ohio", "Pennsylvania", "New York", "Massachusetts")) %>% 
+  ggplot(aes(x = year, y = population, color = state)) + geom_line()
+
