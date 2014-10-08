@@ -1,0 +1,183 @@
+# Followed directions in chapter until line 139
+
+library (rgdal)
+library (sp)
+map_sp <- readOGR("data/nhgis-shp/", "state_1850")
+class(map_sp)
+str(map_sp, max.level = 2)
+map_sp@bbox
+map_sp@proj4string
+head(map_sp@data)
+plot(map_sp)
+earth <- readOGR("data/ne_50m_land/", "ne_50m_land")
+plot(earth, col = "gray")
+title("The world according to EPSG 4326")
+winkel <- spTransform(earth, CRS("+proj=wintri"))
+plot(winkel, col = "gray")
+title("The world according to Oswald Winkel")
+
+
+
+```
+
+```{r}
+library (ggplot2)
+library (ggmap)
+geocode("San Francisco, CA")
+geocode("San Francisco, CA", output = "more")
+
+cities <- data.frame(name = c("Saint Louis, MO",
+                    "San Francisco, CA",
+                    "Boston, MA",
+                    "Charleston, SC",
+                    "Houston, TX"),
+           stringsAsFactors = FALSE)
+
+cities_geocoded <- geocode(cities$name)
+cities <- cbind(cities, cities_geocoded)
+
+library(ggplot2)
+ggplot(cities, aes(x = lon, y = lat)) +
+  geom_point() +
+  geom_text(aes(label = name), vjust = -1) +
+  coord_map()
+# why is the gis join arguement best to use?
+map_df <- fortify(map_sp, region = "GISJOIN")
+head(map_df)
+
+map_1850 <- ggplot() + 
+  geom_map(data = map_df,
+           map = map_df,
+           aes(x = long, y = lat, group = group, map_id = id),
+           fill = "white",
+           color = "black",
+           size = 0.2) +
+  coord_map() +
+  theme_minimal()
+
+map_1850
+
+
+map_1850 +
+  geom_point(data = cities, aes(x = lon, y = lat),
+             color = "red", size = 3) +
+  geom_text(data = cities, aes(x = lon, y = lat, label = name),
+            vjust = -1)
+
+
+library(dplyr)
+
+library(historydata)
+data(paulist_missions)
+glimpse(paulist_missions)
+
+map_1850 +
+  geom_point(data = paulist_missions,
+             aes(x = long, y = lat, size = confessions),
+             color = "red", shape = 1) +
+  theme(legend.position = "bottom") +
+  scale_size(range = c(2, 8)) + 
+  ggtitle("Paulist missions as points")
+
+map_1850 +
+  geom_hex(data = paulist_missions,
+             aes(x = long, y = lat)) +
+  theme(legend.position = "bottom") +
+  ggtitle("Paulist missions with hex bin")
+
+map_1850 +
+  geom_density2d(data = paulist_missions,
+             aes(x = long, y = lat)) +
+  theme(legend.position = "bottom") +
+  ggtitle("Paulist missions with density plot")
+
+```
+
+```{r}
+library(historydata)
+data(early_colleges)
+glimpse(early_colleges)
+
+geocode 
+
+
+map_1850 +
+  geom_point(data = early_colleges,
+             aes(x = established, y = ),
+             color = "red", shape = 1) +
+  theme(legend.position = "bottom") +
+  scale_size(range = c(2, 8)) + 
+  ggtitle("Early Colleges as points")
+
+```
+
+```{r}
+library (historydata)
+data(early_colleges)
+glimpse (early_colleges)
+summarize(early_colleges, city + State)
+          %>%
+  
+
+> library(dplyr)
+> library(tidyr)
+
+
+> library(early_colleges)
+> library(stringr)
+
+            
+head(early_colleges)
+str(early_colleges)
+str(early_colleges)
+
+
+ 
+
+```
+
+## Loading required package: sp
+## rgdal: version: 0.9-1, (SVN revision 518)
+## Geospatial Data Abstraction Library extensions to R successfully loaded
+## Loaded GDAL runtime: GDAL 1.11.1, released 2014/09/24
+## Path to GDAL shared files: /usr/local/Cellar/gdal/1.11.1/share/gdal
+## Loaded PROJ.4 runtime: Rel. 4.8.0, 6 March 2012, [PJ_VERSION: 480]
+## Path to PROJ.4 shared files: (autodetected)
+library(sp)
+library (ggplot2)
+library (ggmap)
+library(historydata)
+library(dplyr)
+## 
+## Attaching package: 'dplyr'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+data (early_colleges)
+head (early_colleges)
+## Source: local data frame [6 x 6]
+## 
+##                  college         original_name         city state
+## 1                Harvard                    NA    Cambridge    MA
+## 2       William and Mary                    NA Williamsburg    VA
+## 3                   Yale                    NA    New Haven    CT
+## 4 Pennsylvania, Univ. of                    NA Philadelphia    PA
+## 5              Princeton College of New Jersey    Princeton    NJ
+## 6               Columbia        King's College     New York    NY
+## Variables not shown: established (int), sponsorship (chr)
+early_colleges<- early_colleges%>%
+mutate(location=paste (city, state))
+location_geocoded <- geocode(early_colleges$location)
+early_colleges_geocoded <- cbind(early_colleges, location_geocoded)
+map1850<- readOGR ("nhgis-shp" , "state_1850")
+## OGR data source with driver: ESRI Shapefile 
+## Source: "nhgis-shp", layer: "state_1850"
+## with 37 features and 7 fields
+## Feature type: wkbPolygon with 2 dimensions
+fort<- fortify (map1850)
+## Regions defined for each Polygons
