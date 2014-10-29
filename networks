@@ -1,0 +1,109 @@
+---
+title: "netwoks"
+author: "George Oberle"
+date: "October 26, 2014"
+output: html_document
+---
+
+```{r}
+#tests from Lincoln's lessons
+library(igraph)
+g <- graph.formula(1-2, 1-3, 2-3, 2-4, 3-5, 4-5, 4-6, 4-7, 5-6, 6-7)
+plot(g)
+```
+
+```{r}
+g2 <- graph.formula(1-+2, 1-+3, 2+-3, 2--4, 3-+5, 4+-5, 4-+6, 4+-7, 5-+6, 6+-7)
+plot(g2)
+
+```
+
+```{r}
+g3 <- graph.formula(Sam-+Mary, Sam-+Tom, Mary++Tom)
+V(g3)$gender <- c("M","F","M")
+V(g3)$color <- "red"
+g3$name <- "My test graph"
+plot(g3)
+```
+
+```{r}
+#library (historydata)
+#error in line 30
+#data (tudors)
+
+#head(tudors)
+#tudors
+
+#g4 <- graph.formula(Henry++Elizabeth, Arthur+-Henry,Arthur+-Elizabeth)
+#V(g4)$              
+#plot(g4)
+
+```
+
+```{r}
+library(igraph)
+library(dplyr)
+library(historydata)
+
+sample_data <- data_frame(node_1 = c("A", "B", "C"), 
+                          node_2 = c("B", "C", "A"))
+
+sample_graph <- graph.data.frame(sample_data)
+sample_graph
+
+E(sample_graph)
+V(sample_graph)
+plot(sample_graph)
+
+get.adjacency(sample_graph)
+
+```
+
+```{r}
+data(tudors)
+tudors
+tudors_g <- graph.data.frame(tudors, directed = FALSE)
+plot(tudors_g)
+title("The Tudors, take one")
+
+```
+
+```{r}
+tudor_people <- data_frame(name = V(tudors_g)$name, 
+                           monarch =  c(TRUE, FALSE, TRUE, FALSE, FALSE,
+                                       FALSE, FALSE, TRUE, TRUE, TRUE, TRUE,
+                                       FALSE, FALSE, FALSE, FALSE, FALSE,
+                                       FALSE, FALSE, FALSE, FALSE, FALSE,
+                                       FALSE, FALSE, FALSE, FALSE))
+tudor_people
+
+```
+
+
+```{r}
+V(tudors_g)$shape <- ifelse(tudor_people$monarch, "square", "circle")
+V(tudors_g)$color <- ifelse(tudor_people$monarch, "red", "lightblue")
+plot(tudors_g)
+title("The Tudors, take two")
+```
+
+```{r}
+E(tudors_g)$color <- ifelse(E(tudors_g)$relationship == "child",
+                            "yellow", "green")
+plot(tudors_g)
+title("The Tudors, take three")
+
+plot(tudors_g, layout = layout.reingold.tilford)
+title("The Tudors, take three")
+str(tudors_g, e = TRUE, v = TRUE, g = TRUE)
+```
+
+
+```{r}
+#g5 <- graph.formula(person_1++person2,)
+#V(g5)$spouse
+
+#plot(g5)
+
+```
+
